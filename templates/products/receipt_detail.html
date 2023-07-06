@@ -1,0 +1,43 @@
+{% extends 'products/base.html'%} {% block content%}
+<br />
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="text-center">Ordre D'achat</h1><br>
+          <h2 class="lead">Nom du Client: {{receipt.issued_to | title}}</h2>
+        </div>
+        <div class="card-block">
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead>
+                <tr>
+                  <td><strong>Nom de L'article</strong></td>
+                  <td class="text-xs-center"><strong>Quantité de l'article</strong></td>
+                  <td class="text-xs-right"><strong>Total Bill(FCFA)</strong></td>
+                  <td class="text-xs-right"><strong>Amount Paid(FCFA)</strong></td>
+                  <td class="text-xs-right">
+                    <strong>Total change(FCFA)</strong>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{receipt.item| title}}</td>
+                  <td class="text-xs-center">{{receipt.quantity }}</td>
+                  <td class="text-xs-center">{{receipt.get_total | title}} FCFA</td>
+                  <td class="text-xs-right">{{ receipt.amount_received }} FCFA</td>
+                  <td class="text-xs-right">{{ receipt.get_change }} FCFA</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

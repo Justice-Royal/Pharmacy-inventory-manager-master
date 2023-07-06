@@ -1,0 +1,52 @@
+{% extends 'products/base.html'%} {% block content%}
+<br></br>
+
+<div class = "container">
+  <h1 class= "text-center">Articles en stock</h1>
+  <br>
+
+  <div class = "container">
+    <form action = "" method = "GET">
+      {{product_filters.form}}
+      <input 
+      type = "submit"
+      value = "Search Products"
+      class="btn btn-secondary btn"/>
+    </form>
+  </div>
+
+  <br>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Categorie</th>
+        <th scope="col">Nom de l'article</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Prix unitaire(FCFA)</th>
+        <th scope = "col">Detail</th>
+        <th scope = "col">Action</th>
+      </tr>
+    </thead>
+    {% for product in products%}
+    <tbody>
+      <tr>    
+        <td>{{product.category_name}}</td>
+        <td>{{product.item_name}}</td>
+        <td>{{product.total_quantity}}</td>
+        <td>{{product.unit_price}} FCFA</td>
+        <td><a href="{% url 'product_detail' product.id %}"
+              ><input
+                type="submit"
+                value="BUY ITEM"
+                class="btn btn-secondary btn"
+                type="button"
+            /></a></td>
+             <td><a href="{% url 'modifier' product.pk %}"class='btn btn-warning'>Modifier</a></td>
+            <td><a href="{% url 'supprimer_produit' product.id %}" class="btn btn-danger">Supprimer</a></td>
+
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock%}

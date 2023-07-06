@@ -1,0 +1,14 @@
+{% extends 'products/base.html' %}\ 
+{% comment %} {% load crispy_forms_tags %}  {% endcomment %}
+{% block content %}
+<br><br><br><br><br><br>
+<div class="body container-fluid container">
+  <h2 class="text-center">Vous vous êtes déconnecter avec succès</h2><br>
+  <h6 class="text-center "><a href="{% url 'logine' %}"><input
+    type="submit"
+    value="Login Again"
+    class="btn btn-info btn-danger"
+    type="button"
+/></a></h6>
+</div>
+{% endblock %}

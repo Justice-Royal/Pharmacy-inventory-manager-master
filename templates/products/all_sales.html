@@ -1,0 +1,53 @@
+{% extends 'products/base.html'%} {% block content%}
+<br></br>
+
+<div class = "container">
+<h1 class = "text-center">Toutes les ventes effectués</h1><br>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Total du montant reçu</th>
+        <th scope="col">Total Change Given</th>
+        <th scope="col">Montant net</th>
+      </tr>
+    </thead>  
+    <tbody>
+      <tr>    
+        <td>{{total}} FCFA</td>
+        <td>{{change}} FCFA</td>
+        <td>{{net}} FCFA</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br></br>
+
+<div class = "container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Nom du client</th>
+        <th scope="col">Article acheté</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Prix unitaire(FCFA)</th>
+        <th scope="col">Total Cost</th>
+        <th scope="col">Montant payé</th>
+        <th scope="col">Change Collected</th>
+      </tr>
+    </thead>
+    {% for sale in sales %}
+    <tbody>
+      <tr>    
+        <td>{{sale.issued_to | title}}</td>
+        <td>{{sale.item | title}}</td>
+        <td>{{sale.quantity}}</td>
+        <td>₦{{sale.unit_price}}</td>
+        <td>₦{{sale.get_total}}</td>
+        <td>₦{{sale.amount_received}}</td>
+        <td>₦{{sale.get_change}}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock%}
